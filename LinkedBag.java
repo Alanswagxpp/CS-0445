@@ -77,4 +77,5 @@ public class LinkedBag<E> implements BagInterface<E> {
         }
         return result;
     }
+
 }
