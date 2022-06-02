@@ -39,16 +39,17 @@ public class LinkedBag<E> implements BagInterface<E> {
             if(cur.data.equals(entry) ) {
                 result = true;
             }
-        }
-
+        }        
         return result;
+        return getNodeOf(entry) != null;
     }
 
+
     public Node getNodeOf(E entry) {
-        Node result = false;
-        for (Node cur = head; cur!= null && !result; cur = cur.next) {
+        Node result = null;
+        for (Node cur = head; cur!= null && result == null ; cur = cur.next) {
             if (cur.data.equals(entry)) {
-                result = true
+                result = null;
             }
         }
         return result;
