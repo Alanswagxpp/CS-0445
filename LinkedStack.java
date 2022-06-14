@@ -50,7 +50,7 @@ public class LinkedStack<E> implements StackInterface<E> {
     }
 
     public void clear() {
-        
+        topNode = null;
     } 
 
 }
