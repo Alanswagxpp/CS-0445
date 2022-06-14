@@ -1,6 +1,6 @@
 import java.util.EmptyStackException;
 
-public interface StackInterface {
+public interface StackInterface<E> {
     public static boolean cheeckBrackets(String expr) {
         StackInterface<Character> openBracket = new ArrayStack<>();
         int n = expr.length(), i = 0;
