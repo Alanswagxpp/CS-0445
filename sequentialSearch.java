@@ -13,4 +13,14 @@ public class sequentialSearch<T> {
                     contains(collection, item, start + 1);
         }
     }
+
+
+    public int sumUpArray(int[] nums){
+        return sumUpArray(nums,nums.length);
+    }
+
+    public int sumUpArray(int[]nums, int index){
+        
+        return 1;
+    }
 }
