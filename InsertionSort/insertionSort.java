@@ -33,4 +33,12 @@ public class insertionSort {
         }
     }
 
+    private static <T extends Comparable<? super T>> void mergeSort(T[] a, int n) {
+        // Call helper
+    }
+
+    private static <T extends Comparable<? super T>> void mergeSort(T[] a, T[] aux, int start, int end) {
+
+    }
+
 }
