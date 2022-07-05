@@ -34,11 +34,19 @@ public class insertionSort {
     }
 
     private static <T extends Comparable<? super T>> void mergeSort(T[] a, int n) {
+        T[] aux = (T[]) new Comparable<?>[a.length];
         // Call helper
+        mergeSort(a, aux, 0, n);
     }
 
     private static <T extends Comparable<? super T>> void mergeSort(T[] a, T[] aux, int start, int end) {
+        if(end - start > 1 ){
+            int mid = (start + end) /2 ;
+            mergeSort(a, aux, start, mid); // sort the left half
+            mergeSort(a, aux, mid, end);  //sort the right half
+            
 
+        }
     }
 
 }
