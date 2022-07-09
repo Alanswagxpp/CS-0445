@@ -40,13 +40,43 @@ public class insertionSort {
     }
 
     private static <T extends Comparable<? super T>> void mergeSort(T[] a, T[] aux, int start, int end) {
-        if(end - start > 1 ){
-            int mid = (start + end) /2 ;
+        if (end - start > 1) {
+            int mid = (start + end) / 2;
             mergeSort(a, aux, start, mid); // sort the left half
-            mergeSort(a, aux, mid, end);  //sort the right half
-            
-
+            mergeSort(a, aux, mid, end); // sort the right half
+            mergeSort(a, aux, start, mid, end); // merge AND copy back
         }
     }
 
+    private static <T extends Comparable<? super T>> void mergeSort(T[] a, T[] aux, int start, int mid, int end) {
+        int startLeft = start;
+        int endLeft = mid;
+        int startRight = mid;
+        int endRight = end;
+        int i = start;
+        // compare the first item on the left and right of a,
+        // copying the smaller one into aux until one side runs out.
+        while (startLeft < endLeft && startRight < endRight) {
+            if (a[startLeft].compareTo(a[startRight]) > 0) {
+                aux[i] = a[startRight++];
+            } else {
+                aux[i] = a[startLeft++];
+            }
+            i++;
+        }
+        // Copy the remaining items on the non-empty side of a into aux.
+        while (startLeft < endLeft) {
+            aux[i] = a[startLeft++];
+            i++;
+        }
+        while (startRight < endRight) {
+            aux[i] = a[startRight++];
+            i++;
+        }
+        // Copy everything from aux to a
+        for (i = start ; i < end; i++) {
+            a[i] = aux[i];
+        }
+    }
+ 
 }
