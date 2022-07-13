@@ -75,7 +75,7 @@ public class insertionSort {
         }
         // Copy everything from aux to a
         for (i = start ; i < end; i++) {
-            a[i] = aux[i];
+            a[i] = aux[i];  
         }
     }
  
