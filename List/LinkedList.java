@@ -2,9 +2,12 @@ package List;
 
 import java.security.DrbgParameters.NextBytes;
 
+import javax.print.DocFlavor.INPUT_STREAM;
+
 public class LinkedList<E> {
 
     private Node head;
+    private Node tail;
     private int size;
 
     private class Node {
@@ -19,6 +22,7 @@ public class LinkedList<E> {
 
     public LinkedList() {
         head = null;
+        tail = null;
         size = 0;
     }
 
@@ -32,6 +36,16 @@ public class LinkedList<E> {
         return result;
     }
 
+    public void add(E entry) {
+        if (isEmpty) {
+            head = new Node(entry, null);
+            tail = head;
+        }
+        tail.next = new Node(entry, null);
+        tail = tail.next;
+        size++;
+    }
+
     public E remove(int pos) {
         // check that pos is valid
         if (pos < 0 || pos >= size) {
@@ -41,16 +55,23 @@ public class LinkedList<E> {
         if (pos == 0) {
             result = head.data;
             head = head.next;
+            if (size ==1 ){
+                tail = head;
+            }
         } else {
             Node prev = getNodeAt(pos - 1);
             // get the item(data) at pos
             result = prev.next.data;
             // update the chain to remove node pos
             prev.next = prev.next.next; // Node at i-1 link to i+1, “ignore" the Node i
+            if(pos == size -1) {
+                tail = prev; 
+            }
         }
         // size--
         size--;
         // return result
         return result;
     }
+
 }
